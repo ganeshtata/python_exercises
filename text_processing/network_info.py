@@ -37,18 +37,18 @@ output_csv = open('network_info.csv', 'wb')  # Output csv
 writer = csv.writer(output_csv, delimiter=',')  # Create csv writer
 writer.writerow(["interface", "inet", "status"])  # Write csv header
 for i, text in enumerate(split_text[1:]):
-		if i % 2 == 0:  # Even indices contain the interface names
-			interface = text
-		else:
-			cur_info = list()
-			status = ""
-			inet = ""
-			status_split = text.split("status: ")  # If "status: " is present, split the string
-			if len(status_split) > 1:  # Check if "status: " is present or not
-				status = status_split[-1]  # If it is, extract the status
-			inet_list = inet_regex.findall(text)  # Final all inet IP addresses
-			if inet_list != []:
-				inet = inet_list[0]
-			writer.writerow([interface, inet, status])  # Write a new row into the csv
+	if i % 2 == 0:  # Even indices contain the interface names
+		interface = text
+	else:
+		cur_info = list()
+		status = ""
+		inet = ""
+		status_split = text.split("status: ")  # If "status: " is present, split the string
+		if len(status_split) > 1:  # Check if "status: " is present or not
+			status = status_split[-1]  # If it is, extract the status
+		inet_list = inet_regex.findall(text)  # Final all inet IP addresses
+		if inet_list != []:
+			inet = inet_list[0]
+		writer.writerow([interface, inet, status])  # Write a new row into the csv
 			
 output_csv.close()
