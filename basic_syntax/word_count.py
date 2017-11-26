@@ -1,3 +1,14 @@
+"""
+
+Problem 2.
+
+Write a program that takes a file name as command line argument,
+count how many times each word appears in the file and prints the word that appears the most
+(and its relevant count)
+
+"""
+
+
 import sys
 import re
 from collections import Counter
@@ -8,4 +19,4 @@ list_of_words = re.findall('\w+', file_text)  # Find the list of words using app
 list_of_words = [word.lower() for word in list_of_words]  # Convert words to one case
 word_counts = Counter(list_of_words)  # Counter Dictionary containing counts of each word
 most_frequent_word = word_counts.most_common(1)  # Find most frequent word
-print "Most Frequent Word - %s, Count - %s" %(most_frequent_word[0][0], most_frequent_word[0][1])
+print "Most Frequent Word - %s, Count - %s" % (most_frequent_word[0][0], most_frequent_word[0][1])
